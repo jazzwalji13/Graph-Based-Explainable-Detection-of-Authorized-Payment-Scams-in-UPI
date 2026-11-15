@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-bg: 244 245 248;
+  --c-surface: 255 255 255;
+  --c-surface2: 238 240 244;
+  --c-border: 224 227 234;
+  --c-ink: 15 27 45;
+  --c-muted: 96 107 128;
+  --c-brand: 13 110 105;        /* deep teal */
+  --c-brandink: 255 255 255;
+  --c-brandsoft: 213 238 234;
+  --c-accent: 217 119 6;        /* amber */
+  --c-danger: 210 50 45;
+  --c-dangersoft: 252 226 223;
+  --c-ok: 22 145 76;
+  --c-oksoft: 219 245 228;
+  --c-warn: 180 83 9;
+  --c-warnsoft: 253 242 210;
+  color-scheme: light;
+}
+
+.dark {
+  --c-bg: 9 14 25;
+  --c-surface: 17 26 44;
+  --c-surface2: 26 36 58;
+  --c-border: 37 50 76;
+  --c-ink: 228 233 242;
+  --c-muted: 139 152 175;
+  --c-brand: 45 212 191;        /* teal-300 for dark contrast */
+  --c-brandink: 6 27 26;
+  --c-brandsoft: 18 54 52;
+  --c-accent: 251 191 36;
+  --c-danger: 251 113 106;
+  --c-dangersoft: 69 26 24;
+  --c-ok: 74 222 128;
+  --c-oksoft: 16 52 33;
+  --c-warn: 253 224 71;
+  --c-warnsoft: 61 48 6;
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  @apply bg-bg text-ink antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--c-brand));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbars, subtle */
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: rgb(var(--c-border)); border-radius: 8px; }
+
+/* Animated dashes on graph evidence edges */
+@keyframes dashflow { to { stroke-dashoffset: -16; } }
+.edge-flow { stroke-dasharray: 6 6; animation: dashflow 1.1s linear infinite; }
+
+/* Phone frame notch */
+.phone-notch::after {
+  content: "";
+  position: absolute;
+  top: 10px; left: 50%; transform: translateX(-50%);
+  width: 96px; height: 18px; border-radius: 9999px;
+  background: #0a0a0a;
+}

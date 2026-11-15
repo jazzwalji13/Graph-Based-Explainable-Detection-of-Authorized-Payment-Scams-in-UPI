@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "users": 1000,
+  "days": 150,
+  "start_date": "2026-06-16",
+  "drift_start_day": 122,
+  "scam_rate": 0.016,
+  "flag_threshold": 0.62,
+  "non_realization_rate": 0.38,
+  "missing_text_rate": 0.55,
+  "missing_signal_rate": 0.05,
+  "hard_negative_rate": 0.09,
+  "demo_user_name": "Meena Devi",
+  "demo_amount": 80000,
+  "scam_type_weights": {
+    "digital_arrest": 0.17,
+    "utility_bill": 0.23,
+    "kyc_sim": 0.21,
+    "task_investment": 0.21,
+    "relative_impersonation": 0.18
+  },
+  "new_variant_weight": 0.25,
+  "notes": "All values synthetic. drift: new scam variant (e_challan_summons) appears only after drift_start_day."
+}
