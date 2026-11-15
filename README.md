@@ -147,6 +147,12 @@ The demo case is deterministic and **replays**: Simulator → Play demo story re
 - **LLM (optional)**: if `LLM_API_KEY` is set, the narrative (2 sentences) is phrased by the configured model from *only* the extracted fact JSON. Facts, IDs, amounts, timestamps and consent flags come from the database and cannot be overridden by the model.
 - **Model card (synthetic)**: LightGBM, scale_pos_weight ≈ 60, temporal split 66/12/22 train/calibration/test, sigmoid-calibrated, ~39k train rows, PR-AUC 0.9999, flag threshold 0.62, check-ins ≈ 15.5 / 1,000 payments, precision @ flag 1.0 (synthetic).
 
+## Engineering notes
+
+- **Case graph rendering.** React Flow measures nodes via ResizeObserver to flip visibility and compute edges. Some embedded/headless browsers never deliver RO callbacks, leaving the graph blank. Two mitigations, both in-repo: `frontend/src/resizeObserverShim.ts` (a change-gated poll-based RO fallback, loaded before any other module) and explicit node width/height in `CaseGraph`. Verified: 17 nodes + 30 edges render in a window that reports zero RO callbacks.
+- **Determinism.** `make seed` regenerates the identical corpus (seed 42); `/demo/story` re-arms the scripted Meena Devi case for unlimited replay.
+- **Demo runs at ~800 kLoC/day review pace** with zero external calls; every request is answered locally.
+
 ## Verification & tests
 
 ```bash

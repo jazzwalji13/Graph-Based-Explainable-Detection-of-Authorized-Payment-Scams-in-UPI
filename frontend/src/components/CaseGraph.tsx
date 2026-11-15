@@ -84,6 +84,8 @@ export function CaseGraph({ graph }: { graph: Graph }) {
         x: n.type === "payment" ? 205 : n.type === "behavior" ? 420 : 0,
         y: i * 128,
       },
+      width: 208,
+      height: 108,
       data: {
         label: n.label, gtype: n.type, contribution: n.contribution,
         highlighted: n.highlighted, share: n.contribution_share, maxAbs, ts: n.timestamp, stage: n.stage,
